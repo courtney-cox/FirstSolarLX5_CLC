@@ -1,0 +1,7 @@
+<Tag Name="EMU_KN###_71A01" TagType="Base" DataType="AXIS_VIRTUAL" ExternalAccess="Read/Write">
+<Data Format="Axis">
+<AxisParameters MotionGroup="KN" ConversionConstant="10.0" OutputCamExecutionTargets="0" PositionUnits="Position Units" AverageVelocityTimebase="0.25" RotaryAxis="Rotary" PositionUnwind="3600" HomeMode="Active" HomeDirection="Bi-directional Forward" HomeSequence="Immediate" HomeConfigurationBits="16#0000_0000"
+ HomePosition="0.0" HomeOffset="0.0" MaximumSpeed="205.0" MaximumAcceleration="18219.0" MaximumDeceleration="18219.0" ProgrammedStopMode="Fast Stop" MasterInputConfigurationBits="1" MasterPositionFilterBandwidth="0.1" MaximumAccelerationJerk="1619180.2" MaximumDecelerationJerk="1619180.2" DynamicsConfigurationBits="7"
+ InterpolatedPositionConfiguration="16#0000_0002" AxisUpdateSchedule="Base"/>
+</Data>
+</Tag>

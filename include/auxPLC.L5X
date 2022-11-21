@@ -1,0 +1,12 @@
+<Module Name="DUMMY" CatalogNumber="1756-L82E" Vendor="1" ProductType="14" ProductCode="165" Major="33" Minor="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false">
+<EKey State="Disabled"/>
+<Ports>
+<Port Id="1" Address="DUMMY_ADDR" Type="ICP" Upstream="true"/>
+<Port Id="2" Type="Ethernet" Upstream="false">
+<Bus/>
+</Port>
+</Ports>
+<ExtendedProperties>
+<public><ConfigID>100</ConfigID><CatNum>1756-L82E</CatNum></public>
+</ExtendedProperties>
+</Module>

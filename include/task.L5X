@@ -1,0 +1,5 @@
+<Task Name="EMULATION" Type="PERIODIC" Rate="30" Priority="10" Watchdog="500" DisableUpdateOutputs="false" InhibitTask="false">
+<ScheduledPrograms>
+<ScheduledProgram Name="INTERLOCKS"/>
+</ScheduledPrograms>
+</Task>

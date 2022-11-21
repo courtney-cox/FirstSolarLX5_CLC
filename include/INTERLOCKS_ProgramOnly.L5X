@@ -1,0 +1,129 @@
+﻿<Program Use="Target" Name="INTERLOCKS" TestEdits="false" MainRoutineName="Main" Disabled="false" UseAsFolder="false">
+<Tags>
+<Tag Name="Emulation_Running" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Emulation_Start" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,0,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="Emulation_Start_ONS" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="emu_module_number" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[192]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="192"/>
+</Data>
+</Tag>
+<Tag Name="TestInput003" TagType="Base" DataType="SINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="TestOutput003" TagType="Base" DataType="SINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+</Tags>
+<Routines>
+<Routine Name="Forces" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[OTU(Local:13:I.Data.0)OTE(Local:13:I.Data.1)OTE(Local:13:I.Data.2)OTE(Local:13:I.Data.8)OTE(Local:13:I.Data.9)OTE(Local:13:I.Data.10)OTE(Local:13:I.Data.12)OTE(Local:13:I.Data.16)OTE(Local:13:I.Data.17)OTE(Local:13:I.Data.18)OTE(Local:13:I.Data.19)OTE(Local:13:I.Data.20)OTE(Local:13:I.Data.21)OTE(Local:13:I.Data.22)OTE(Local:13:I.Data.23);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[OTE(Local:13:I.Data.13)OTE(Local:13:I.Data.14)OTE(Local:13:I.Data.26)OTE(Local:13:I.Data.27)OTE(Local:13:I.Data.28)OTE(Local:13:I.Data.29)OTE(Local:13:I.Data.30)OTE(Local:13:I.Data.31);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[OTE(Local:14:I.Data.0)OTE(Local:14:I.Data.1)OTE(Local:14:I.Data.2)OTE(Local:14:I.Data.3)OTE(Local:14:I.Data.4)OTE(Local:14:I.Data.5)OTE(Local:14:I.Data.6)OTE(Local:14:I.Data.7);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[ADD(emu_module_number,1,emu_module_number)OTU(line_modules[emu_module_number].Fault_Present);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[GEQ(emu_module_number,254)MOV(0,emu_module_number);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[XIC(Emulation_Running)TON(Emulation_Start,?,?)XIC(Emulation_Start.TT)OTL(HMI.System_spb.master_reset);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[XIC(Emulation_Start.DN)ONS(Emulation_Start_ONS)OTU(HMI.System_spb.master_reset);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="Main" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[CPS(Interlocks_CVS003:O.Data[0],EMU_CVS003_O.DATA[0],496)CPS(EMU_CVS003_I.DATA[0],Interlocks_CVS003:I.Data[0],496);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[MOV(TestOutput003,TestOutput003)CPS(TestOutput003,CI_CVS003.User_Defined_Output[30],1);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[MOV(TestInput003,TestOutput003);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[CPS(CI_CVS003.User_Defined_Input[30],TestInput003,1)MOV(TestInput003,TestInput003);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[JSR(Forces,0);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</Program>
+

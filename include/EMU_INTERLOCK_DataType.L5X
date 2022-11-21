@@ -1,0 +1,6 @@
+﻿<DataType Use="Target" Name="EMU_INTERLOCK" Family="NoFamily" Class="User">
+<Members>
+<Member Name="DATA" DataType="SINT" Dimension="496" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+
